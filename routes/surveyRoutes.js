@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const requireLogin = '../middlewares/requireLogin.js'
-const requireCredits = '../middlewares/requireCredits.js'
+const requireLogin = require('../middlewares/requireLogin.js')
+const requireCredits = require('../middlewares/requireCredits.js')
 
 const Survey = mongoose.model('surveys')
 
@@ -16,5 +16,7 @@ module.exports = app => {
       _user: req.user.id,
       dateSent: Date.now()
     })
+
+    res.send(user)
   })
 }
