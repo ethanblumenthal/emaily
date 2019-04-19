@@ -22,9 +22,9 @@ module.exports = app => {
       _user: req.user.id,
       dateSent: Date.now()
     })
+    const mailer = new Mailer(survey, surveyTemplate(survey))
 
     try {
-      const mailer = new Mailer(survey, surveyTemplate)
       await mailer.send()
       await survey.save()
       req.user.credits -= 1
