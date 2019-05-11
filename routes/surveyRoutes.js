@@ -15,7 +15,6 @@ module.exports = app => {
     res.send(surveys)
   })
 
-
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Thanks for voting!')
   })
@@ -71,5 +70,10 @@ module.exports = app => {
     } catch (err) {
       res.status(422).send(err)
     }
+  })
+
+  app.delete('/api/surveys/:id', async (req, res) => {
+    await Survey.findOneAndDelete({ _id: req.params.id })
+    res.sendStatus(202)
   })
 }
