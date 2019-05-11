@@ -3,9 +3,10 @@ const { Schema } = mongoose
 const RecipientSchema = require('./Recipient')
 
 const surveySchema = new Schema({
+  sender: String,
   title: String,
   subject: String,
-  body: String,
+  question: String,
   recipients: [RecipientSchema],
   yes: {
     type: Number,
