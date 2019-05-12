@@ -56,7 +56,7 @@ class SurveyList extends Component {
     return (
       <div>
         <div className="input-field col s12" style={{ width: '25vh' }}>
-          <select value={this.state.selectValue} onChange={(e) => this.setState({ selectValue: e.target.value })}>
+          <select value={this.state.selectValue} onChange={event => this.setState({ selectValue: event.target.value })}>
             <option value="" disabled defaultValue>Choose your option</option>
             <option value="new-old">Date: New-Old</option>
             <option value="old-new">Date: Old-New</option>
