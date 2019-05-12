@@ -1,14 +1,34 @@
+import _ from 'lodash'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchSurveys, deleteSurvey } from '../../actions'
+import M from 'materialize-css/dist/js/materialize.min.js'
 
 class SurveyList extends Component {
+  state = { selectValue : '' }
+
   componentDidMount() {
+    M.AutoInit()
     this.props.fetchSurveys()
   }
 
-  renderSurveys() {
-    return this.props.surveys.reverse().map(survey => {
+  sortSurveys() {
+    const { surveys } = this.props
+
+    switch(this.state.selectValue) {
+      case 'old-new':
+        return this.renderSurveys(_.orderBy(surveys, ['dateSent'],['asc']))
+      case 'a-z':
+        return this.renderSurveys(_.orderBy(surveys, ['title'],['asc']))
+      case 'z-a':
+        return this.renderSurveys(_.orderBy(surveys, ['title'],['desc']))
+      default:
+        return this.renderSurveys(_.orderBy(surveys, ['dateSent'],['desc']))
+    }
+  }
+
+  renderSurveys(sortedSurveys) {
+    return sortedSurveys.map(survey => {
       return (
         <div key={survey._id} className="card darken-1">
           <div className="card-content">
@@ -35,7 +55,17 @@ class SurveyList extends Component {
   render() {
     return (
       <div>
-        {this.renderSurveys()}
+        <div className="input-field col s12" style={{ width: '25vh' }}>
+          <select value={this.state.selectValue} onChange={(e) => this.setState({ selectValue: e.target.value })}>
+            <option value="" disabled defaultValue>Choose your option</option>
+            <option value="new-old">Date: New-Old</option>
+            <option value="old-new">Date: Old-New</option>
+            <option value="a-z">Title: A-Z</option>
+            <option value="z-a">Title: Z-A</option>
+          </select>
+          <label>Filter By:</label>
+        </div>
+        {this.sortSurveys()}
       </div>
     )
   }
