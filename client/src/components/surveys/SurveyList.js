@@ -33,10 +33,10 @@ class SurveyList extends Component {
         <div key={survey._id} className="card darken-1">
           <div className="card-content">
             <span className="card-title">{survey.title}</span>
-            <p>Subject: {survey.subject}</p>
-            <p>Question: {survey.question}</p>
-            <p className="right">Sender: {survey.sender}</p>
-            <p className="right">Date: {new Date(survey.dateSent).toLocaleDateString()}</p>
+            <p className="card-subject">Subject: {survey.subject}</p>
+            <p className="card-question">Question: {survey.question}</p>
+            <p className="right card-sender">Sender: {survey.sender}</p>
+            <p className="right card-date">Date: {new Date(survey.dateSent).toLocaleDateString()}</p>
           </div>
           <div className="card-action valign-wrapper">
             <a href="/surveys">Yes: {survey.yes}</a>
