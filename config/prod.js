@@ -7,6 +7,5 @@ module.exports = {
   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
   sendgridKey: process.env.SENDGRID_KEY,
   redirectDomain: process.env.REDIRECT_DOMAIN,
-  redisURI: process.env.REDIS_URI,
-  cookieKey: process.env.COOKIE_KEY
+  redisURL: process.env.REDIS_URL,
 }
