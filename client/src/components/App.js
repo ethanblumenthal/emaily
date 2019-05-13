@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container grey lighten-2" style={{ height: '100vh' }}>
+        <div className="container blue lighten-5" style={{ height: '100vh' }}>
           <Header />
           <div style={{ width: '90%', margin: 'auto' }}>
             <Route exact path="/" component={Landing} />

@@ -33,19 +33,23 @@ class SurveyList extends Component {
         <div key={survey._id} className="card darken-1">
           <div className="card-content">
             <span className="card-title">{survey.title}</span>
-            <p className="card-subject">Subject: {survey.subject}</p>
-            <p className="card-question">Question: {survey.question}</p>
-            <p className="right card-sender">Sender: {survey.sender}</p>
-            <p className="right card-date">Date: {new Date(survey.dateSent).toLocaleDateString()}</p>
+            <div className="valign-wrapper" style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <div>
+                <p className="card-subject">Subject: {survey.subject}</p>
+                <p className="card-question">Question: {survey.question}</p>
+              </div>
+              <div>
+                <p className="card-sender">Sender: {survey.sender}</p>
+                <p className="card-date right">Date: {new Date(survey.dateSent).toLocaleDateString()}</p>
+              </div>
+            </div>
           </div>
-          <div className="card-action valign-wrapper">
-            <a href="/surveys">Yes: {survey.yes}</a>
-            <a href="/surveys">No: {survey.no}</a>
-            <button
-              className="btn red darken-1"
-              onClick={() => this.props.deleteSurvey(survey._id)}
-              style={{ justifyContent: 'flex-end' }}
-            >Delete Survey</button>
+          <div className="card-action valign-wrapper" style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div>
+              <a href="/surveys">Yes: {survey.yes}</a>
+              <a href="/surveys">No: {survey.no}</a>
+            </div>
+            <button className="btn red darken-1" onClick={() => this.props.deleteSurvey(survey._id)}>Delete Survey</button>
           </div>
         </div>
       )
@@ -55,7 +59,7 @@ class SurveyList extends Component {
   render() {
     return (
       <div>
-        <div className="input-field col s12" style={{ width: '25vh' }}>
+        <div className="input-field col s12" style={{ width: '25vh', marginTop: 20 }}>
           <select value={this.state.selectValue} onChange={event => this.setState({ selectValue: event.target.value })}>
             <option value="" disabled defaultValue>Choose your option</option>
             <option value="new-old">Date: New-Old</option>

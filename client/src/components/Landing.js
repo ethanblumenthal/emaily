@@ -5,7 +5,7 @@ class Landing extends Component {
   componentDidMount() {
     document.addEventListener('DOMContentLoaded', function() {
       const elems = document.querySelectorAll('.slider')
-      M.Slider.init(elems, { indicators: false, interval: 3000 })
+      M.Slider.init(elems, { interval: 3000 })
     })
   }
 
